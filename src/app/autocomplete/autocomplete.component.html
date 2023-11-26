@@ -1,0 +1,26 @@
+<div class="autocomplete-container">
+    <div class="input-wrapper">
+        <label for="autocomplete">{{ config?.label ?? 'Topic*'}}</label>
+        <!-- <button role="button" class="input-clear"></button>
+        <button role="button" class="input-search"></button> -->
+        <input type="text"
+            id="autocomplete"
+            [formControl]="inputControl"
+            (focus)="onInputFocus()"
+            (blur)="onInputBlur()"
+            placeholder="{{config?.placeholder ?? 'Ex. Topic'}}"/>
+        <div class="dropdown-menu" *ngIf="showDropdown">
+            <ul>
+                <li *ngFor="let item of data" (mousedown)="selectItem(item)">
+                    {{ item.name}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="item-display-wrapper" *ngIf="selectedItem">
+        <p>{{selectedItem.name}}</p>
+        <img src="{{selectedItem.sprites.front_default}}"
+        alt="selectedItem.name" height="150" width="150"/>
+        <p>{{selectedItem.weight}}</p>
+    </div>
+</div>
